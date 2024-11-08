@@ -21,6 +21,6 @@ struct MeadowApp: App {
         // ImmersiveSpace showing the environment
         ImmersiveSpace(id: "ImmersiveSpace") {
             ImmersiveView(loader: loader)
-        }.immersionStyle(selection: .constant(.progressive), in: .progressive)
+        }.immersionStyle(selection: .constant(.full), in: .full)
     }
 }
