@@ -18,7 +18,7 @@ actor EnvironmentLoader {
     // Returning the cached Entity or loading it otherwise
     func getEntity() async throws -> Entity {
         if let entity = entity { return entity }
-        let entity = try await Entity(named: "Garden", in: realityKitContentBundle)
+        let entity = try await Entity(named: "Scene", in: realityKitContentBundle)
         self.entity = entity
         return entity
     }

@@ -1,0 +1,36 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 2.0 (448.0.16.0.3)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["SkySphere", "SpaceStation"]
+    def "SkySphere" (
+        active = true
+        references = @SkySphere.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+
+        over "SkySphere_mat"
+        {
+            asset inputs:SkySphere_Texture = @NightSkyHDRI008_4K-HDR.exr@
+        }
+    }
+
+    def "SpaceStation" (
+        active = true
+        references = @Space_Station_3.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+

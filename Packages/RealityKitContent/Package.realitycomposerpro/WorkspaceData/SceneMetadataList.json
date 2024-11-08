@@ -23,47 +23,6 @@
       }
     ]
   },
-  "83E8C50C-185D-4931-96B5-999CE31B39E0" : {
-    "objectMetadataList" : [
-      [
-        "83E8C50C-185D-4931-96B5-999CE31B39E0",
-        "Root",
-        "WaterPlane",
-        "new_assets"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "83E8C50C-185D-4931-96B5-999CE31B39E0",
-        "Root",
-        "WaterPlane"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "83E8C50C-185D-4931-96B5-999CE31B39E0",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "83E8C50C-185D-4931-96B5-999CE31B39E0",
-        "Root",
-        "WaterPlane",
-        "Looks"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      }
-    ]
-  },
   "66168B71-AB05-424E-8B6C-D33D6E61B08F" : {
     "objectMetadataList" : [
       [
@@ -74,6 +33,11 @@
         "isExpanded" : true,
         "isLocked" : false
       }
+    ]
+  },
+  "83E8C50C-185D-4931-96B5-999CE31B39E0" : {
+    "objectMetadataList" : [
+
     ]
   },
   "AF09ED6F-1707-48FD-8720-65B998362C09" : {
