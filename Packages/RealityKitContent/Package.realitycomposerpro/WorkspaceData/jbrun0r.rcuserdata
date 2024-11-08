@@ -1,5 +1,5 @@
 {
-  "advancedEditorSelectedIdentifier" : "ProjectBrowser",
+  "advancedEditorSelectedIdentifier" : "BehaviorsPluginID",
   "openSceneRelativePaths" : [
     "Scene.usda"
   ],
@@ -10,6 +10,50 @@
   },
   "sceneCameraHistory" : {
     "D66134B1-3681-4A8E-AFE5-29F257229F3B" : [
+      {
+        "date" : 752769848.282151,
+        "title" : "Untitled",
+        "transform" : [
+          0.9878653,
+          3.9996095e-09,
+          -0.15531352,
+          0,
+          -0.109823234,
+          0.7071068,
+          -0.6985262,
+          0,
+          0.10982325,
+          0.7071068,
+          0.69852626,
+          0,
+          0.014658004,
+          0.10747957,
+          0.110049725,
+          1
+        ]
+      },
+      {
+        "date" : 752769847.278904,
+        "title" : "Untitled",
+        "transform" : [
+          0.9878653,
+          3.9996095e-09,
+          -0.15531352,
+          0,
+          -0.109823234,
+          0.7071068,
+          -0.6985262,
+          0,
+          0.10982325,
+          0.7071068,
+          0.69852626,
+          0,
+          0.035798684,
+          0.24301292,
+          0.24376608,
+          1
+        ]
+      },
       {
         "date" : 752769096.159117,
         "title" : "Untitled",
