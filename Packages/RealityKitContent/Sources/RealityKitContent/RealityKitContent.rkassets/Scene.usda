@@ -10,61 +10,157 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["SkySphere", "SpaceStation", "Timeline"]
-    def "SkySphere" (
+    def "Sun" (
         active = true
-        references = @SkySphere.usdz@
+        prepend references = @Sun.usdz@
+    )
+    {
+        float3 xformOp:scale = (10, 10, 10)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Mercury" (
+        active = true
+        prepend references = @Mercury.usdz@
+    )
+    {
+        float3 xformOp:scale = (3, 3, 3)
+        float3 xformOp:translate = (0.011305444, 0, -3.1044872)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Venus" (
+        active = true
+        prepend references = @Venus.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.99999994, 0, 0, 0)
+        float3 xformOp:scale = (4, 4, 4)
+        float3 xformOp:translate = (-3.5521548, 0.035146713, -1.8281002)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Earth" (
+        active = true
+        prepend references = @Earth.usdz@
+    )
+    {
+        float3 xformOp:scale = (4, 4, 4)
+        float3 xformOp:translate = (3.4106188, -0.32526398, 3.0083976)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Mars" (
+        active = true
+        prepend references = @Mars.usdz@
+    )
+    {
+        float3 xformOp:scale = (4, 4, 4)
+        float3 xformOp:translate = (5.766535, -0.28756618, 1.571662)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Jupiter" (
+        active = true
+        prepend references = @Jupiter.usdz@
+    )
+    {
+        float3 xformOp:scale = (7, 7, 7)
+        float3 xformOp:translate = (-2.5652864, 0, 4.323421)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Saturn" (
+        active = true
+        prepend references = @Saturn.usdz@
+    )
+    {
+        float3 xformOp:scale = (5, 5, 5)
+        float3 xformOp:translate = (0, 0, 6.784979)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Uranus" (
+        active = true
+        prepend references = @Uranus.usdz@
+    )
+    {
+        float3 xformOp:scale = (5, 5, 5)
+        float3 xformOp:translate = (4.89408, 0, -4.759291)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Neptune" (
+        active = true
+        prepend references = @Neptune.usdz@
+    )
+    {
+        float3 xformOp:scale = (6, 6, 6)
+        float3 xformOp:translate = (-5.957611, 0, 1.3153973)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Uranus_1" (
+        active = true
+        prepend references = @Uranus.usdz@
     )
     {
         float3 xformOp:scale = (1, 1, 1)
-
-        over "SkySphere_mat"
-        {
-            asset inputs:SkySphere_Texture = @NightSky.exr@
-        }
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
-    def "SpaceStation" (
+    def "Earth_1" (
         active = true
-        prepend references = @SpaceStation.usdz@
+        prepend references = @Earth.usdz@
     )
     {
-        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:scale = (1, 1, 1)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def RealityKitComponent "AnimationLibrary"
-        {
-            token info:id = "RealityKit.AnimationLibrary"
-
-            def RealityKitAnimationFile "default_subtree_animation"
-            {
-                uniform bool looping = 1
-                uniform string name = "default subtree animation"
-            }
-        }
     }
 
-    def RealityKitTimeline "Timeline"
+    def "Mars_1" (
+        active = true
+        prepend references = @Mars.usdz@
+    )
     {
-        def RealityKitTrack "Track"
-        {
-            def RealityKitAction "Animation"
-            {
-                string actionKind = "animation"
-                string animation = "default subtree animation"
-                int blendLayer = 500
-                double duration = 33.29999923706055
-                uniform token info:id = "80113DA1-B97E-4668-A389-F21403F55641"
-                double loopCount = 0
-                bool separateAnimatedValue = 1
-                double startTime = 0
-                rel target = </Root/SpaceStation>
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
 
-                def RealityKitStruct "handoffType"
-                {
-                }
-            }
-        }
+    def "Venus_1" (
+        active = true
+        prepend references = @Venus.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Saturn_1" (
+        active = true
+        prepend references = @Saturn.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Jupiter_1" (
+        active = true
+        prepend references = @Jupiter.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Mercury_1" (
+        active = true
+        prepend references = @Mercury.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 
