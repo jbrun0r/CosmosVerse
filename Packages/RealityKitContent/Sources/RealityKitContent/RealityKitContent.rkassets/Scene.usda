@@ -10,13 +10,14 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["SkySphere", "SpaceStation", "Timeline"]
+    reorder nameChildren = ["SkySphere", "SpaceStation", "Timeline", "Earth", "Moon", "Venus", "Mercury", "Mars"]
     def "SkySphere" (
         active = true
         references = @SkySphere.usdz@
     )
     {
         float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
 
         over "SkySphere_mat"
         {
@@ -26,10 +27,11 @@ def Xform "Root"
 
     def "SpaceStation" (
         active = true
-        prepend references = @SpaceStation.usdz@
+        references = @SpaceStation.usdz@
     )
     {
         float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (4.2381808e-7, 25, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "AnimationLibrary"
@@ -65,6 +67,54 @@ def Xform "Root"
                 }
             }
         }
+    }
+
+    def "Earth" (
+        active = true
+        references = @Earth.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.1, 0.1, 0.1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Moon" (
+        references = @Moon.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (20, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Venus" (
+        active = true
+        references = @Venus.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.05, 0.05, 0.05)
+        float3 xformOp:translate = (-40, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Mercury" (
+        active = true
+        references = @Mercury.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.02, 0.02, 0.02)
+        float3 xformOp:translate = (-70, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Mars" (
+        active = true
+        prepend references = @Mars.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.05, 0.05, 0.05)
+        float3 xformOp:translate = (40, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 
