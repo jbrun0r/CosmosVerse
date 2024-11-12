@@ -49,8 +49,12 @@ struct ContentView: View {
                 }.frame(depth: 0.4)
             }.frame(depth: 0.4)
             VStack {
-                // Button to open the ImmersiveSpace
-                Button("Enter") {
+                Text("CosmosVerse")
+                    .font(.extraLargeTitle)
+                    .fontWeight(.black)
+                Text("Aprenda sobre o sistema solar imersivamente")
+                    .font(.title)
+                    Button("Enter") {
                     Task {
                         await openImmersiveSpace(id: "ImmersiveSpace")
                         dismissWindow()

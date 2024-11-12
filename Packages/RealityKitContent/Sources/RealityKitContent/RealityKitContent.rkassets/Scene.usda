@@ -10,9 +10,10 @@
 
 def Xform "Root"
 {
+    reorder nameChildren = ["SkySphere", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "SpaceStation", "Moon_1", "AudioMixGroups", "Terra_Rotation", "Som_de_fundo", "Nave", "Marte_Rotation", "Mercurio_Rotation", "Venus_Rotation", "Jupiter_Rotation", "Saturno_Rotation", "Urano_Rotation", "Netuno_Rotation"]
     def "Sun" (
         active = true
-        prepend references = @Sun.usdz@
+        references = @Sun.usdz@
     )
     {
         quatf xformOp:orient = (1, 0, 0, 0)
@@ -41,13 +42,14 @@ def Xform "Root"
 
         def RealityKitComponent "InputTarget"
         {
+            bool enabled = 0
             uniform token info:id = "RealityKit.InputTarget"
         }
     }
 
     def "Mercury" (
         active = true
-        prepend references = @Mercury.usdz@
+        references = @Mercury.usdz@
     )
     {
         float3 xformOp:scale = (10, 10, 10)
@@ -77,11 +79,41 @@ def Xform "Root"
         {
             uniform token info:id = "RealityKit.InputTarget"
         }
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/Mercury/OnAddedToScene>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnAddedToScene"
+        {
+            rel actions = </Root/Mercury/OnAddedToScene/Action>
+            uniform bool exclusive
+            rel triggers = </Root/Mercury/OnAddedToScene/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/Mercury>
+                token info:id = "SceneTransition"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/Mercurio_Rotation>
+                rel animationLibraryKeyOverrideKey = </Root/Mercury/OnAddedToScene/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
     }
 
     def "Venus" (
         active = true
-        prepend references = @Venus.usdz@
+        references = @Venus.usdz@
     )
     {
         quatf xformOp:orient = (0.99999994, 0, 0, 0)
@@ -112,6 +144,36 @@ def Xform "Root"
         {
             uniform token info:id = "RealityKit.InputTarget"
         }
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/Venus/OnAddedToScene>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnAddedToScene"
+        {
+            rel actions = </Root/Venus/OnAddedToScene/Action>
+            uniform bool exclusive
+            rel triggers = </Root/Venus/OnAddedToScene/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/Venus>
+                token info:id = "SceneTransition"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/Venus_Rotation>
+                rel animationLibraryKeyOverrideKey = </Root/Venus/OnAddedToScene/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
     }
 
     def "Earth" (
@@ -119,7 +181,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (0, 0.52359885, 0)
         }
-        prepend references = @Earth.usdz@
+        references = @Earth.usdz@
     )
     {
         quatf xformOp:orient = (0.9659258, 0, 0.25881904, 0)
@@ -153,13 +215,38 @@ def Xform "Root"
 
         def RealityKitComponent "RCP_BehaviorsContainer"
         {
+            rel behaviors = </Root/Earth/OnAddedToScene>
             uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnAddedToScene"
+        {
+            rel actions = </Root/Earth/OnAddedToScene/Action>
+            uniform bool exclusive
+            rel triggers = </Root/Earth/OnAddedToScene/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/Earth>
+                token info:id = "SceneTransition"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/Terra_Rotation>
+                rel animationLibraryKeyOverrideKey = </Root/Earth/OnAddedToScene/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
         }
     }
 
     def "Mars" (
         active = true
-        prepend references = @Mars.usdz@
+        references = @Mars.usdz@
     )
     {
         float3 xformOp:scale = (20, 20, 20)
@@ -189,11 +276,41 @@ def Xform "Root"
         {
             uniform token info:id = "RealityKit.InputTarget"
         }
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/Mars/OnAddedToScene>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnAddedToScene"
+        {
+            rel actions = </Root/Mars/OnAddedToScene/Action>
+            uniform bool exclusive
+            rel triggers = </Root/Mars/OnAddedToScene/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/Mars>
+                token info:id = "SceneTransition"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/Marte_Rotation>
+                rel animationLibraryKeyOverrideKey = </Root/Mars/OnAddedToScene/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
     }
 
     def "Jupiter" (
         active = true
-        prepend references = @Jupiter.usdz@
+        references = @Jupiter.usdz@
     )
     {
         float3 xformOp:scale = (30, 30, 30)
@@ -223,11 +340,41 @@ def Xform "Root"
         {
             uniform token info:id = "RealityKit.InputTarget"
         }
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/Jupiter/OnAddedToScene>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnAddedToScene"
+        {
+            rel actions = </Root/Jupiter/OnAddedToScene/Action>
+            uniform bool exclusive
+            rel triggers = </Root/Jupiter/OnAddedToScene/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/Jupiter>
+                token info:id = "SceneTransition"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/Jupiter_Rotation>
+                rel animationLibraryKeyOverrideKey = </Root/Jupiter/OnAddedToScene/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
     }
 
     def "Saturn" (
         active = true
-        prepend references = @Saturn.usdz@
+        references = @Saturn.usdz@
     )
     {
         float3 xformOp:scale = (25, 25, 25)
@@ -257,11 +404,41 @@ def Xform "Root"
         {
             uniform token info:id = "RealityKit.InputTarget"
         }
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/Saturn/OnAddedToScene>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnAddedToScene"
+        {
+            rel actions = </Root/Saturn/OnAddedToScene/Action>
+            uniform bool exclusive
+            rel triggers = </Root/Saturn/OnAddedToScene/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/Saturn>
+                token info:id = "SceneTransition"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/Saturno_Rotation>
+                rel animationLibraryKeyOverrideKey = </Root/Saturn/OnAddedToScene/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
     }
 
     def "Uranus" (
         active = true
-        prepend references = @Uranus.usdz@
+        references = @Uranus.usdz@
     )
     {
         float3 xformOp:scale = (25, 25, 25)
@@ -291,11 +468,41 @@ def Xform "Root"
         {
             uniform token info:id = "RealityKit.InputTarget"
         }
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/Uranus/OnAddedToScene>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnAddedToScene"
+        {
+            rel actions = </Root/Uranus/OnAddedToScene/Action>
+            uniform bool exclusive
+            rel triggers = </Root/Uranus/OnAddedToScene/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/Uranus>
+                token info:id = "SceneTransition"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/Urano_Rotation>
+                rel animationLibraryKeyOverrideKey = </Root/Uranus/OnAddedToScene/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
     }
 
     def "Neptune" (
         active = true
-        prepend references = @Neptune.usdz@
+        references = @Neptune.usdz@
     )
     {
         float3 xformOp:scale = (25, 25, 25)
@@ -339,13 +546,55 @@ def Xform "Root"
         {
             asset inputs:SkySphere_Texture = @NightSky.exr@
         }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["bensound-eternalhorizon.mp3"]
+                rel values = </Root/bensound_eternalhorizon_mp3>
+            }
+        }
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/SkySphere/OnAddedToScene>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnAddedToScene"
+        {
+            rel actions = </Root/SkySphere/OnAddedToScene/Action>
+            uniform bool exclusive
+            rel triggers = </Root/SkySphere/OnAddedToScene/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/SkySphere>
+                token info:id = "SceneTransition"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/Som_de_fundo>
+                rel animationLibraryKeyOverrideKey = </Root/SkySphere/OnAddedToScene/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
     }
 
     def "SpaceStation" (
         active = true
-        prepend references = @SpaceStation.usdz@
+        references = @SpaceStation.usdz@
     )
     {
+        reorder nameChildren = ["New_Audio_File", "Materials", "Meshes", "AnimationLibrary"]
         float3 xformOp:scale = (0.003, 0.003, 0.003)
         float3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
@@ -360,14 +609,78 @@ def Xform "Root"
                 uniform string name = "default subtree animation"
             }
         }
+
+        def RealityKitAudioFile "New_Audio_File" (
+            references = @SpaceStation.usdz@
+        )
+        {
+            uniform asset file = @Efeito sonoro - Som da nave espacial.mp3@
+            uniform token loadingStrategy = "Stream"
+            uniform bool shouldLoop = 1
+            uniform bool shouldRandomizeStartTime = 1
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (2050.337, 2283.2773, 1923.9127)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-56.519745, -25.759521, -21.857971)
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/SpaceStation/OnAddedToScene>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnAddedToScene"
+        {
+            rel actions = </Root/SpaceStation/OnAddedToScene/Action>
+            uniform bool exclusive
+            rel triggers = </Root/SpaceStation/OnAddedToScene/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/SpaceStation>
+                token info:id = "SceneTransition"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/Nave>
+                rel animationLibraryKeyOverrideKey = </Root/SpaceStation/OnAddedToScene/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
     }
 
     def "Moon_1" (
         active = true
-        prepend references = @Moon 1.usdz@
+        references = @Moon 1.usdz@
     )
     {
-        float3 xformOp:scale = (5, 5, 5)
+        float3 xformOp:scale = (8, 8, 8)
         float3 xformOp:translate = (6.442625, 1.5965108, 3.0751112)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
@@ -384,11 +697,300 @@ def Xform "Root"
         }
     }
 
+    def RealityKitTimeline "Terra_Rotation"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 60
+                uniform token info:id = "FEC0FD98-3552-4201-A679-88EFCFC10C0F"
+                double startTime = 0
+                rel target = </Root/Earth>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def Xform "SpatialAudio"
+    {
+        quatf xformOp:orient = (0.99999994, 0, 0, 0)
+        float3 xformOp:scale = (0.53836954, 0.53836954, 0.53836954)
+        float3 xformOp:translate = (0.10779387, 0.079739034, -0.036542684)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "SpatialAudio"
+        {
+            uniform token info:id = "RealityKit.SpatialAudio"
+        }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["Efeito sonoro - Som da nave espacial.mp3"]
+                rel values = </Root/Efeito_sonoro___Som_da_nave_espacial_mp3>
+            }
+        }
+    }
+
     def RealityKitAudioFile "Efeito_sonoro___Som_da_nave_espacial_mp3"
     {
         uniform asset file = @Efeito sonoro - Som da nave espacial.mp3@
-        rel mixGroup = </Root/AudioMixGroups/MixGroup>
         uniform bool shouldLoop = 0
+    }
+
+    def "Hubble" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0.5235987, 3.1415927, 0)
+        }
+        references = @Hubble.usdz@
+    )
+    {
+        quatf xformOp:orient = (-4.2221963e-8, -1.13133405e-8, 0.9659258, -0.25881904)
+        float3 xformOp:scale = (0.003, 0.003, 0.003)
+        float3 xformOp:translate = (8.861183, 1.2642682, -3.0216331)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "FloatingAstronaut" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0.5235988, 0.5235988, 0.5235988)
+        }
+        references = @FloatingAstronaut.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.91855866, 0.1767767, 0.30618623, 0.17677669)
+        float3 xformOp:scale = (0.0003, 0.0003, 0.0003)
+        float3 xformOp:translate = (0.2, 0, 0.2)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "SpaceCargoTransporter" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0.52359873, -7.450581e-9, 0.52359873)
+        }
+        references = @SpaceCargoTransporter.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.9330127, 0.25, 0.06698729, 0.25)
+        float3 xformOp:scale = (0.001, 0.001, 0.001)
+        float3 xformOp:translate = (4.1258464, 1.8921635, 3.1697295)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Apollo11CommandModuleCombined" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (8.603189e-9, 0.52359885, 0.52359873)
+        }
+        references = @Apollo11CommandModuleCombined.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.9330127, -0.06698729, 0.25000003, 0.24999997)
+        float3 xformOp:scale = (0.001, 0.001, 0.001)
+        float3 xformOp:translate = (6.0968447, 0, 1.6159635)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def RealityKitAudioFile "bensound_eternalhorizon_mp3"
+    {
+        uniform asset file = @bensound-eternalhorizon.mp3@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitTimeline "Som_de_fundo"
+    {
+        reorder nameChildren = ["Track2", "Track"]
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "bensound-eternalhorizon.mp3"
+                bool controlPlayback = 1
+                double duration = 251.64733333333334
+                uniform token info:id = "F3B64E8A-7B36-471B-8D58-7BA6AA2CF0A1"
+                double startTime = 0
+                rel target = </Root/SkySphere>
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "Nave"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Animation"
+            {
+                string actionKind = "animation"
+                string animation = "default subtree animation"
+                int blendLayer = 500
+                double duration = 33.29999923706055
+                uniform token info:id = "2224719A-AB3C-44E6-A610-F38851F8A833"
+                bool separateAnimatedValue = 1
+                double startTime = 0
+                rel target = </Root/SpaceStation>
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "Marte_Rotation"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 60
+                uniform token info:id = "3C878366-5950-41E5-9B5B-5FEB1BDF10E9"
+                double startTime = 0
+                rel target = </Root/Mars>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "Mercurio_Rotation"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 20
+                uniform token info:id = "A352A02B-846F-412A-A2BF-CBE27BCD4377"
+                double startTime = 0
+                rel target = </Root/Mercury>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "Venus_Rotation"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 30
+                uniform token info:id = "AECD3F92-2132-48FD-8234-3D6E3E24BA3D"
+                double startTime = 0
+                rel target = </Root/Venus>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "Jupiter_Rotation"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 120
+                uniform token info:id = "ED3DE18B-DF3A-4EDC-8EE1-97988AE25055"
+                double startTime = 0
+                rel target = </Root/Jupiter>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "Saturno_Rotation"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 80
+                uniform token info:id = "ECC0D37E-1918-445E-BF9F-F1C6834804D1"
+                double startTime = 0
+                rel target = </Root/Saturn>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "Urano_Rotation"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 100
+                uniform token info:id = "28E4E335-0C65-4817-AE78-0EC7D957F2A2"
+                double startTime = 0.013564515063424947
+                rel target = </Root/SkySphere>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitTimeline "Netuno_Rotation"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 1
+                uniform token info:id = "76427A5C-381D-4E77-914D-1574A5A623C7"
+                double startTime = 0
+                rel target = </Root/Neptune>
+
+                def RealityKitStruct "timingFunction"
+                {
+                }
+            }
+        }
     }
 }
 
