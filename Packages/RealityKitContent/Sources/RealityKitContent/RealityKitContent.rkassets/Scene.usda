@@ -15,8 +15,34 @@ def Xform "Root"
         prepend references = @Sun.usdz@
     )
     {
-        float3 xformOp:scale = (10, 10, 10)
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (40, 40, 40)
+        float3 xformOp:translate = (8.028795, 0, 34.512096)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.19999999)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (3.7252903e-8, 0, 4.8428774e-8)
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
     }
 
     def "Mercury" (
@@ -24,9 +50,33 @@ def Xform "Root"
         prepend references = @Mercury.usdz@
     )
     {
-        float3 xformOp:scale = (3, 3, 3)
-        float3 xformOp:translate = (0.011305444, 0, -3.1044872)
+        float3 xformOp:scale = (10, 10, 10)
+        float3 xformOp:translate = (-4.0473824, 0, 34.353405)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.19999999, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (2.2351742e-8, 0, 2.9802322e-8)
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
     }
 
     def "Venus" (
@@ -35,19 +85,76 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.99999994, 0, 0, 0)
-        float3 xformOp:scale = (4, 4, 4)
-        float3 xformOp:translate = (-3.5521548, 0.035146713, -1.8281002)
+        float3 xformOp:scale = (15, 15, 15)
+        float3 xformOp:translate = (-5.442006, 0.035146713, 19.945492)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (2.682209e-7, 0, 2.682209e-7)
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
     }
 
     def "Earth" (
         active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0.52359885, 0)
+        }
         prepend references = @Earth.usdz@
     )
     {
-        float3 xformOp:scale = (4, 4, 4)
-        float3 xformOp:translate = (3.4106188, -0.32526398, 3.0083976)
+        quatf xformOp:orient = (0.9659258, 0, 0.25881904, 0)
+        float3 xformOp:scale = (20, 20, 20)
+        float3 xformOp:translate = (8.585022, -0.32526398, -0.2628889)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.20499998, 0.205, 0.20500001)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0.00004060194, 0, 0.00011316314)
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
     }
 
     def "Mars" (
@@ -55,9 +162,33 @@ def Xform "Root"
         prepend references = @Mars.usdz@
     )
     {
-        float3 xformOp:scale = (4, 4, 4)
-        float3 xformOp:translate = (5.766535, -0.28756618, 1.571662)
+        float3 xformOp:scale = (20, 20, 20)
+        float3 xformOp:translate = (20.810026, -0.28756618, -10.203438)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.19999999, 0.19999999, 0.19999999)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (3.3527613e-8, -0.000718683, 2.2351742e-8)
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
     }
 
     def "Jupiter" (
@@ -65,9 +196,33 @@ def Xform "Root"
         prepend references = @Jupiter.usdz@
     )
     {
-        float3 xformOp:scale = (7, 7, 7)
-        float3 xformOp:translate = (-2.5652864, 0, 4.323421)
+        float3 xformOp:scale = (30, 30, 30)
+        float3 xformOp:translate = (50.026573, 0, 10.127647)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.19999999, 0.2, 0.20000002)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.0005309619, 0.000080280006, -3.7252903e-9)
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
     }
 
     def "Saturn" (
@@ -75,9 +230,33 @@ def Xform "Root"
         prepend references = @Saturn.usdz@
     )
     {
-        float3 xformOp:scale = (5, 5, 5)
-        float3 xformOp:translate = (0, 0, 6.784979)
+        float3 xformOp:scale = (25, 25, 25)
+        float3 xformOp:translate = (56.90773, 0, 58.53873)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.46763724, 0.20021316, 0.46763742)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-3.7252903e-8, 0, 3.7252903e-8)
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
     }
 
     def "Uranus" (
@@ -85,9 +264,33 @@ def Xform "Root"
         prepend references = @Uranus.usdz@
     )
     {
-        float3 xformOp:scale = (5, 5, 5)
-        float3 xformOp:translate = (4.89408, 0, -4.759291)
+        float3 xformOp:scale = (25, 25, 25)
+        float3 xformOp:translate = (4.89408, 0, 84.767715)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.19999999, 0.2, 0.20000002)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (6.3329935e-8, 0, 7.0780516e-8)
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
     }
 
     def "Neptune" (
@@ -95,72 +298,97 @@ def Xform "Root"
         prepend references = @Neptune.usdz@
     )
     {
-        float3 xformOp:scale = (6, 6, 6)
-        float3 xformOp:translate = (-5.957611, 0, 1.3153973)
+        float3 xformOp:scale = (25, 25, 25)
+        float3 xformOp:translate = (-38.67488, 0, 60.37546)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.2, 0.2, 0.2)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (2.9802322e-8, 0, 2.9802322e-8)
+                }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
     }
 
-    def "Uranus_1" (
+    def "SkySphere" (
         active = true
-        prepend references = @Uranus.usdz@
+        references = @SkySphere.usdz@
     )
     {
         float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 3.2033463)
+
+        over "SkySphere_mat"
+        {
+            asset inputs:SkySphere_Texture = @NightSky.exr@
+        }
+    }
+
+    def "SpaceStation" (
+        active = true
+        prepend references = @SpaceStation.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.003, 0.003, 0.003)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "AnimationLibrary"
+        {
+            token info:id = "RealityKit.AnimationLibrary"
+
+            def RealityKitAnimationFile "default_subtree_animation"
+            {
+                uniform bool looping = 1
+                uniform string name = "default subtree animation"
+            }
+        }
+    }
+
+    def "Moon_1" (
+        active = true
+        prepend references = @Moon 1.usdz@
+    )
+    {
+        float3 xformOp:scale = (5, 5, 5)
+        float3 xformOp:translate = (6.442625, 1.5965108, 3.0751112)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
-    def "Earth_1" (
-        active = true
-        prepend references = @Earth.usdz@
-    )
+    def RealityKitComponent "AudioMixGroups"
     {
-        float3 xformOp:scale = (1, 1, 1)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        uniform token info:id = "RealityKit.AudioMixGroups"
+
+        def RealityKitAudioMixGroup "MixGroup"
+        {
+            float gain = 0
+            bool mute = 0
+            float speed = 0.25
+        }
     }
 
-    def "Mars_1" (
-        active = true
-        prepend references = @Mars.usdz@
-    )
+    def RealityKitAudioFile "Efeito_sonoro___Som_da_nave_espacial_mp3"
     {
-        float3 xformOp:scale = (1, 1, 1)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def "Venus_1" (
-        active = true
-        prepend references = @Venus.usdz@
-    )
-    {
-        float3 xformOp:scale = (1, 1, 1)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def "Saturn_1" (
-        active = true
-        prepend references = @Saturn.usdz@
-    )
-    {
-        float3 xformOp:scale = (1, 1, 1)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def "Jupiter_1" (
-        active = true
-        prepend references = @Jupiter.usdz@
-    )
-    {
-        float3 xformOp:scale = (1, 1, 1)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def "Mercury_1" (
-        active = true
-        prepend references = @Mercury.usdz@
-    )
-    {
-        float3 xformOp:scale = (1, 1, 1)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        uniform asset file = @Efeito sonoro - Som da nave espacial.mp3@
+        rel mixGroup = </Root/AudioMixGroups/MixGroup>
+        uniform bool shouldLoop = 0
     }
 }
 
