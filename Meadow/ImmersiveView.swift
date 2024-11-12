@@ -18,11 +18,19 @@ struct ImmersiveView: View {
     var body: some View {
         RealityView { content in
             content.add(try! await loader.getEntity())
-        }.onDisappear {
+        }
+        .onDisappear {
             // Re-opening the window if the
             // ImmersiveSpace is closed (with the Digital Crown)
             openWindow(id: "Window")
         }
+        .gesture(
+            TapGesture()
+                .targetedToAnyEntity()
+                .onEnded { value in
+                    value.entity.applyTapForBehaviors()
+                }
+        )
     }
 }
 

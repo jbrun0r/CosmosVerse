@@ -10,62 +10,64 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["SkySphere", "SpaceStation", "Timeline", "Earth", "Moon", "Venus", "Mercury", "Mars"]
+    reorder nameChildren = ["SkySphere", "SpaceStation", "Earth", "Moon", "Venus", "Mercury", "Mars", "SkySphereSound", "SpaceStationAnimation"]
     def "SkySphere" (
         active = true
         references = @SkySphere.usdz@
     )
     {
-        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:scale = (100, 100, 100)
         float3 xformOp:translate = (0, 0, 0)
 
         over "SkySphere_mat"
         {
             asset inputs:SkySphere_Texture = @NightSky.exr@
         }
-    }
 
-    def "SpaceStation" (
-        active = true
-        references = @SpaceStation.usdz@
-    )
-    {
-        float3 xformOp:scale = (0.01, 0.01, 0.01)
-        float3 xformOp:translate = (4.2381808e-7, 25, 0)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def RealityKitComponent "AnimationLibrary"
+        def RealityKitComponent "AudioLibrary"
         {
-            token info:id = "RealityKit.AnimationLibrary"
+            uniform token info:id = "RealityKit.AudioLibrary"
 
-            def RealityKitAnimationFile "default_subtree_animation"
+            def RealityKitDict "resources"
             {
-                uniform bool looping = 1
-                uniform string name = "default subtree animation"
+                string[] keys = ["bensound-eternalhorizon.mp3"]
+                rel values = </Root/bensound_eternalhorizon_mp3>
             }
         }
-    }
 
-    def RealityKitTimeline "Timeline"
-    {
-        def RealityKitTrack "Track"
+        def RealityKitComponent "RCP_BehaviorsContainer"
         {
-            def RealityKitAction "Animation"
-            {
-                string actionKind = "animation"
-                string animation = "default subtree animation"
-                int blendLayer = 500
-                double duration = 33.29999923706055
-                uniform token info:id = "80113DA1-B97E-4668-A389-F21403F55641"
-                double loopCount = 0
-                bool separateAnimatedValue = 1
-                double startTime = 0
-                rel target = </Root/SpaceStation>
+            rel behaviors = </Root/SkySphere/OnAddedToScene>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
 
-                def RealityKitStruct "handoffType"
-                {
-                }
+        def Preliminary_Behavior "OnAddedToScene"
+        {
+            rel actions = </Root/SkySphere/OnAddedToScene/Action>
+            uniform bool exclusive
+            rel triggers = </Root/SkySphere/OnAddedToScene/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/SkySphere>
+                token info:id = "SceneTransition"
             }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/SkySphereSound>
+                rel animationLibraryKeyOverrideKey = </Root/SkySphere/OnAddedToScene/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
+
+        def RealityKitComponent "AmbientAudio"
+        {
+            uniform token info:id = "RealityKit.AmbientAudio"
         }
     }
 
@@ -74,8 +76,40 @@ def Xform "Root"
         references = @Earth.usdz@
     )
     {
+        reorder nameChildren = ["Materials", "Meshes"]
         float3 xformOp:scale = (0.1, 0.1, 0.1)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            bool allowsDirectInput = 1
+            bool allowsIndirectInput = 1
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (275.7627, 300.25732, 335.63452)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.00009918213, -0.000091552734, -0.00020599365)
+                }
+            }
+        }
+
+        def RealityKitCustomComponent "RealityKitContent_GestureComponent"
+        {
+            uniform token info:id = "RealityKitContent.GestureComponent"
+        }
     }
 
     def "Moon" (
@@ -109,12 +143,107 @@ def Xform "Root"
 
     def "Mars" (
         active = true
-        prepend references = @Mars.usdz@
+        references = @Mars.usdz@
     )
     {
-        float3 xformOp:scale = (0.05, 0.05, 0.05)
+        float3 xformOp:scale = (0.03, 0.03, 0.03)
         float3 xformOp:translate = (40, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "SpaceStation" (
+        active = true
+        references = @SpaceStation.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (4.2381808e-7, 25, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "AnimationLibrary"
+        {
+            token info:id = "RealityKit.AnimationLibrary"
+
+            def RealityKitAnimationFile "default_subtree_animation"
+            {
+                uniform bool looping = 1
+                uniform string name = "default subtree animation"
+            }
+        }
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+    }
+
+    def RealityKitTimeline "SkySphereSound"
+    {
+        reorder nameChildren = ["Track", "Track2"]
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Animation"
+            {
+                string actionKind = "animation"
+                string animation = "default subtree animation"
+                int blendLayer = 500
+                double duration = 33.29999923706055
+                uniform token info:id = "20EF05F9-AAD8-4D1E-9566-5A3730C53A65"
+                bool separateAnimatedValue = 1
+                double startTime = 0
+                rel target = </Root/SpaceStation>
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "bensound-eternalhorizon.mp3"
+                bool controlPlayback = 1
+                double duration = 251.64733333333334
+                uniform token info:id = "1A9D16C3-E4E0-4FEA-884F-4A4A58ECAEC0"
+                double startTime = 0
+                rel target = </Root/SkySphere>
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitAudioFile "bensound_eternalhorizon_mp3"
+    {
+        uniform asset file = @bensound-eternalhorizon.mp3@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitTimeline "SpaceStationAnimation"
+    {
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Animation"
+            {
+                string actionKind = "animation"
+                string animation = "default subtree animation"
+                int blendLayer = 500
+                double duration = 33.29999923706055
+                uniform token info:id = "7A768D38-404A-458A-92D2-A6F0B7205E49"
+                bool separateAnimatedValue = 1
+                double startTime = 0
+                rel target = </Root/SpaceStation>
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
     }
 }
 

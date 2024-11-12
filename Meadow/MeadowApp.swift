@@ -6,6 +6,7 @@ The main app class.
 */
 
 import SwiftUI
+import RealityKitContent
 
 @main
 struct MeadowApp: App {
