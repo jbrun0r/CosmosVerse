@@ -10,12 +10,13 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["SkySphere", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "SpaceStation", "Moon_1", "AudioMixGroups", "Terra_Rotation", "Som_de_fundo", "Nave", "Marte_Rotation", "Mercurio_Rotation", "Venus_Rotation", "Jupiter_Rotation", "Saturno_Rotation", "Urano_Rotation", "Netuno_Rotation"]
+    reorder nameChildren = ["SkySphere", "Sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "SpaceStation", "Moon_1", "AudioMixGroups", "Terra_Rotation", "Som_de_fundo", "Nave", "NaveSound", "FloatingAstrounaut", "Marte_Rotation", "Mercurio_Rotation", "Venus_Rotation", "Jupiter_Rotation", "Saturno_Rotation", "Urano_Rotation", "Netuno_Rotation"]
     def "Sun" (
         active = true
         references = @Sun.usdz@
     )
     {
+        reorder nameChildren = ["geom", "Collider", "InputTarget"]
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (40, 40, 40)
         float3 xformOp:translate = (8.028795, 0, 34.512096)
@@ -42,8 +43,18 @@ def Xform "Root"
 
         def RealityKitComponent "InputTarget"
         {
-            bool enabled = 0
+            bool enabled = 1
             uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "DirectionalLight"
+        {
+            uniform token info:id = "RealityKit.DirectionalLight"
+            float intensity = 10145.708
+
+            def RealityKitStruct "Shadow"
+            {
+            }
         }
     }
 
@@ -241,6 +252,12 @@ def Xform "Root"
                 int performCount = 1
                 token type = "serial"
             }
+        }
+
+        def RealityKitComponent "ImageBasedLightReceiver"
+        {
+            rel iblEntity = </Root/Moon_1>
+            uniform token info:id = "RealityKit.ImageBasedLightReceiver"
         }
     }
 
@@ -539,13 +556,9 @@ def Xform "Root"
         references = @SkySphere.usdz@
     )
     {
+        quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0, 0, 3.2033463)
-
-        over "SkySphere_mat"
-        {
-            asset inputs:SkySphere_Texture = @NightSky.exr@
-        }
 
         def RealityKitComponent "AudioLibrary"
         {
@@ -553,7 +566,7 @@ def Xform "Root"
 
             def RealityKitDict "resources"
             {
-                string[] keys = ["bensound-eternalhorizon.mp3"]
+                string[] keys = ["bensound-eternalhorizon.mp3", "bensound-eternalhorizon.mp3 1"]
                 rel values = </Root/bensound_eternalhorizon_mp3>
             }
         }
@@ -587,6 +600,16 @@ def Xform "Root"
                 token type = "serial"
             }
         }
+
+        over "SkySphere_mat"
+        {
+            asset inputs:SkySphere_Texture = @NightSky.exr@
+        }
+
+        def RealityKitComponent "ChannelAudio"
+        {
+            uniform token info:id = "RealityKit.ChannelAudio"
+        }
     }
 
     def "SpaceStation" (
@@ -595,8 +618,8 @@ def Xform "Root"
     )
     {
         reorder nameChildren = ["New_Audio_File", "Materials", "Meshes", "AnimationLibrary"]
-        float3 xformOp:scale = (0.003, 0.003, 0.003)
-        float3 xformOp:translate = (0, 0, 0)
+        float3 xformOp:scale = (0.2, 0.2, 0.2)
+        float3 xformOp:translate = (-72, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "AnimationLibrary"
@@ -608,16 +631,6 @@ def Xform "Root"
                 uniform bool looping = 1
                 uniform string name = "default subtree animation"
             }
-        }
-
-        def RealityKitAudioFile "New_Audio_File" (
-            references = @SpaceStation.usdz@
-        )
-        {
-            uniform asset file = @Efeito sonoro - Som da nave espacial.mp3@
-            uniform token loadingStrategy = "Stream"
-            uniform bool shouldLoop = 1
-            uniform bool shouldRandomizeStartTime = 1
         }
 
         def RealityKitComponent "Collider"
@@ -646,7 +659,10 @@ def Xform "Root"
 
         def RealityKitComponent "RCP_BehaviorsContainer"
         {
-            rel behaviors = </Root/SpaceStation/OnAddedToScene>
+            rel behaviors = [
+                </Root/SpaceStation/OnAddedToScene>,
+                </Root/SpaceStation/OnAddedToScene2>,
+            ]
             uniform token info:id = "RCP.BehaviorsContainer"
         }
 
@@ -673,6 +689,47 @@ def Xform "Root"
                 token type = "serial"
             }
         }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["Efeito sonoro - Som da nave espacial.mp3 1", "Efeito sonoro - Som da nave espacial.mp3"]
+                rel values = </Root/Efeito_sonoro___Som_da_nave_espacial_mp33>
+            }
+        }
+
+        def RealityKitComponent "AmbientAudio"
+        {
+            float gain = 0
+            uniform token info:id = "RealityKit.AmbientAudio"
+        }
+
+        def Preliminary_Behavior "OnAddedToScene2"
+        {
+            rel actions = </Root/SpaceStation/OnAddedToScene2/Action>
+            uniform bool exclusive
+            rel triggers = </Root/SpaceStation/OnAddedToScene2/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/SpaceStation>
+                token info:id = "SceneTransition"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/NaveSound>
+                rel animationLibraryKeyOverrideKey = </Root/SpaceStation/OnAddedToScene2/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
     }
 
     def "Moon_1" (
@@ -683,6 +740,13 @@ def Xform "Root"
         float3 xformOp:scale = (8, 8, 8)
         float3 xformOp:translate = (6.442625, 1.5965108, 3.0751112)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "ImageBasedLight"
+        {
+            uniform token info:id = "RealityKit.ImageBasedLight"
+            float intensityExponent = 0.14635181
+            bool isGlobalIBL = 0
+        }
     }
 
     def RealityKitComponent "AudioMixGroups"
@@ -717,36 +781,6 @@ def Xform "Root"
         }
     }
 
-    def Xform "SpatialAudio"
-    {
-        quatf xformOp:orient = (0.99999994, 0, 0, 0)
-        float3 xformOp:scale = (0.53836954, 0.53836954, 0.53836954)
-        float3 xformOp:translate = (0.10779387, 0.079739034, -0.036542684)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def RealityKitComponent "SpatialAudio"
-        {
-            uniform token info:id = "RealityKit.SpatialAudio"
-        }
-
-        def RealityKitComponent "AudioLibrary"
-        {
-            uniform token info:id = "RealityKit.AudioLibrary"
-
-            def RealityKitDict "resources"
-            {
-                string[] keys = ["Efeito sonoro - Som da nave espacial.mp3"]
-                rel values = </Root/Efeito_sonoro___Som_da_nave_espacial_mp3>
-            }
-        }
-    }
-
-    def RealityKitAudioFile "Efeito_sonoro___Som_da_nave_espacial_mp3"
-    {
-        uniform asset file = @Efeito sonoro - Som da nave espacial.mp3@
-        uniform bool shouldLoop = 0
-    }
-
     def "Hubble" (
         active = true
         customData = {
@@ -771,8 +805,49 @@ def Xform "Root"
     {
         quatf xformOp:orient = (0.91855866, 0.1767767, 0.30618623, 0.17677669)
         float3 xformOp:scale = (0.0003, 0.0003, 0.0003)
-        float3 xformOp:translate = (0.2, 0, 0.2)
+        float3 xformOp:translate = (0.1, 1.4, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/FloatingAstronaut/OnAddedToScene>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnAddedToScene"
+        {
+            rel actions = </Root/FloatingAstronaut/OnAddedToScene/Action>
+            uniform bool exclusive
+            rel triggers = </Root/FloatingAstronaut/OnAddedToScene/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/FloatingAstronaut>
+                token info:id = "SceneTransition"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/FloatingAstrounaut>
+                rel animationLibraryKeyOverrideKey = </Root/FloatingAstronaut/OnAddedToScene/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
+
+        def RealityKitComponent "AnimationLibrary"
+        {
+            token info:id = "RealityKit.AnimationLibrary"
+
+            def RealityKitAnimationFile "default_subtree_animation"
+            {
+                uniform bool looping = 1
+                uniform string name = "default subtree animation"
+            }
+        }
     }
 
     def "SpaceCargoTransporter" (
@@ -803,12 +878,6 @@ def Xform "Root"
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
-    def RealityKitAudioFile "bensound_eternalhorizon_mp3"
-    {
-        uniform asset file = @bensound-eternalhorizon.mp3@
-        uniform bool shouldLoop = 0
-    }
-
     def RealityKitTimeline "Som_de_fundo"
     {
         reorder nameChildren = ["Track2", "Track"]
@@ -821,6 +890,7 @@ def Xform "Root"
                 bool controlPlayback = 1
                 double duration = 251.64733333333334
                 uniform token info:id = "F3B64E8A-7B36-471B-8D58-7BA6AA2CF0A1"
+                double loopCount = 0
                 double startTime = 0
                 rel target = </Root/SkySphere>
 
@@ -842,6 +912,7 @@ def Xform "Root"
                 int blendLayer = 500
                 double duration = 33.29999923706055
                 uniform token info:id = "2224719A-AB3C-44E6-A610-F38851F8A833"
+                double loopCount = 0
                 bool separateAnimatedValue = 1
                 double startTime = 0
                 rel target = </Root/SpaceStation>
@@ -981,7 +1052,7 @@ def Xform "Root"
             {
                 string actionKind = "spin"
                 int blendLayer = 400
-                double duration = 1
+                double duration = 7.292505859400646
                 uniform token info:id = "76427A5C-381D-4E77-914D-1574A5A623C7"
                 double startTime = 0
                 rel target = </Root/Neptune>
@@ -991,6 +1062,100 @@ def Xform "Root"
                 }
             }
         }
+    }
+
+    def RealityKitTimeline "NaveSound"
+    {
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "bensound-eternalhorizon.mp3"
+                bool controlPlayback = 1
+                double duration = 20051.647
+                uniform token info:id = "778FC9FD-1D89-4B06-AF83-8E14E61E4E6F"
+                double loopCount = 0
+                double startTime = 0
+                rel target = </Root/SkySphere>
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
+    }
+
+    def RealityKitAudioFile "bensound_eternalhorizon_mp3"
+    {
+        uniform asset file = @bensound-eternalhorizon.mp3@
+        uniform bool shouldLoop = 1
+    }
+
+    def RealityKitAudioFile "Efeito_sonoro___Som_da_nave_espacial_mp3"
+    {
+        uniform asset file = @Efeito sonoro - Som da nave espacial.mp3@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitTimeline "FloatingAstrounaut"
+    {
+        reorder nameChildren = ["Track2", "Track"]
+        def RealityKitTrack "Track"
+        {
+            def RealityKitAction "Animation"
+            {
+                string actionKind = "animation"
+                string animation = "default subtree animation"
+                int blendLayer = 500
+                double duration = 6.9666666984558105
+                uniform token info:id = "2C515D73-7FFC-4781-A7AE-1F5944B898C8"
+                bool isActive = 1
+                double loopCount = 0
+                bool separateAnimatedValue = 1
+                double startTime = 0
+                rel target = </Root/FloatingAstronaut>
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
+
+        def RealityKitTrack "Track2"
+        {
+            def RealityKitAction "Spin"
+            {
+                string actionKind = "spin"
+                int blendLayer = 400
+                double duration = 59.92724414803751
+                uniform token info:id = "711E2879-4669-450C-932D-33EFB3BC71ED"
+                float3 localAxis = (2, -100, -10)
+                float revolutions = 1
+                double startTime = 0
+                rel target = </Root/FloatingAstronaut>
+
+                def RealityKitStruct "timingFunction"
+                {
+                    token type = "easeIn"
+                }
+            }
+        }
+    }
+
+    def RealityKitAudioFile "Efeito_sonoro___Som_da_nave_espacial_mp32"
+    {
+        uniform asset file = @Efeito sonoro - Som da nave espacial.mp3@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitAudioFile "Efeito_sonoro___Som_da_nave_espacial_mp33"
+    {
+        uniform asset file = @Efeito sonoro - Som da nave espacial.mp3@
+        uniform bool shouldLoop = 0
     }
 }
 

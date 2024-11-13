@@ -52,7 +52,7 @@ struct ContentView: View {
                 Text("CosmosVerse")
                     .font(.extraLargeTitle)
                     .fontWeight(.black)
-                Text("Aprenda sobre o sistema solar imersivamente")
+                Text("O cosmos diante dos seus olhos")
                     .font(.title)
                     Button("Enter") {
                     Task {
