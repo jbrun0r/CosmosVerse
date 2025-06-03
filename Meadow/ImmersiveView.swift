@@ -23,6 +23,13 @@ struct ImmersiveView: View {
             // ImmersiveSpace is closed (with the Digital Crown)
             openWindow(id: "Window")
         }
+        .gesture(
+            TapGesture()
+                .targetedToAnyEntity()
+                .onEnded { value in
+                    value.entity.applyTapForBehaviors()
+                }
+        )
     }
 }
 
