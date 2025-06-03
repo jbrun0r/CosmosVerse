@@ -10,19 +10,19 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
-
+    
     var loader: EnvironmentLoader
-
+    
     // Showing the environment through a portal
     let root = Entity()
     let portalPlane = ModelEntity(
         mesh: .generatePlane(width: 1.0, depth: 1.0),
         materials: [PortalMaterial()]
     )
-
+    
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissWindow) var dismissWindow
-
+    
     var body: some View {
         ZStack {
             GeometryReader3D { geometry in
@@ -50,11 +50,12 @@ struct ContentView: View {
             }.frame(depth: 0.4)
             VStack {
                 Text("CosmosVerse")
-                    .font(.extraLargeTitle)
-                    .fontWeight(.black)
-                Text("O cosmos diante dos seus olhos")
-                    .font(.title)
-                    Button("Enter") {
+                    .font(.custom("Audiowide-Regular", size: 90))
+                
+                Text("The cosmos awaits you")
+                    .font(.custom("Orbitron-Regular", size: 45))
+                
+                Button("Start") {
                     Task {
                         await openImmersiveSpace(id: "ImmersiveSpace")
                         dismissWindow()

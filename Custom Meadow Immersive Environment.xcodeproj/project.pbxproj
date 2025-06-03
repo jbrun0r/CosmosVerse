@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,10 @@
 		7936CB17004BF9FCD83B79B1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8C56D5DE41288F01940F8143 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E9D08D2C2DEF686600F8F8E4 /* Fonts */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Fonts; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		660AFE572B44DB5600D57B8E /* Frameworks */ = {
@@ -85,6 +89,7 @@
 			children = (
 				660AFE612B44DB5600D57B8E /* MeadowApp.swift */,
 				660AFE632B44DB5600D57B8E /* ContentView.swift */,
+				E9D08D2C2DEF686600F8F8E4 /* Fonts */,
 				660AFE652B44DB5600D57B8E /* ImmersiveView.swift */,
 				660AFE742B44DDBD00D57B8E /* EnvironmentLoader.swift */,
 				660AFE692B44DB5700D57B8E /* Assets.xcassets */,
@@ -124,6 +129,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E9D08D2C2DEF686600F8F8E4 /* Fonts */,
 			);
 			name = "Custom Meadow Immersive Environment";
 			packageProductDependencies = (
