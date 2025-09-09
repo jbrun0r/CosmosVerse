@@ -18,7 +18,7 @@ def Xform "Root"
     {
         reorder nameChildren = ["geom", "Collider", "InputTarget"]
         quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (40, 40, 40)
+        float3 xformOp:scale = (120, 120, 120)
         float3 xformOp:translate = (8.028795, 0, 34.512096)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
@@ -64,7 +64,7 @@ def Xform "Root"
     )
     {
         float3 xformOp:scale = (10, 10, 10)
-        float3 xformOp:translate = (-4.0473824, 0, 34.353405)
+        float3 xformOp:translate = (-18.614159, 0, 34.353405)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "Collider"
@@ -128,8 +128,8 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.99999994, 0, 0, 0)
-        float3 xformOp:scale = (15, 15, 15)
-        float3 xformOp:translate = (-5.442006, 0.035146713, 19.945492)
+        float3 xformOp:scale = (25, 25, 25)
+        float3 xformOp:translate = (-25.435951, 0.035146713, 14.496178)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "Collider"
@@ -196,8 +196,8 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.9659258, 0, 0.25881904, 0)
-        float3 xformOp:scale = (20, 20, 20)
-        float3 xformOp:translate = (8.585022, -0.32526398, -0.2628889)
+        float3 xformOp:scale = (50, 50, 50)
+        float3 xformOp:translate = (-9.139994, -0.32526398, -12.486742)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "Collider"
@@ -266,8 +266,8 @@ def Xform "Root"
         references = @Mars.usdz@
     )
     {
-        float3 xformOp:scale = (20, 20, 20)
-        float3 xformOp:translate = (20.810026, -0.28756618, -10.203438)
+        float3 xformOp:scale = (55, 55, 55)
+        float3 xformOp:translate = (20.810026, -0.28756618, -31.11311)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "Collider"
@@ -330,8 +330,8 @@ def Xform "Root"
         references = @Jupiter.usdz@
     )
     {
-        float3 xformOp:scale = (30, 30, 30)
-        float3 xformOp:translate = (50.026573, 0, 10.127647)
+        float3 xformOp:scale = (80, 80, 80)
+        float3 xformOp:translate = (69.3457, 0, -11.3199005)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "Collider"
@@ -394,8 +394,8 @@ def Xform "Root"
         references = @Saturn.usdz@
     )
     {
-        float3 xformOp:scale = (25, 25, 25)
-        float3 xformOp:translate = (56.90773, 0, 58.53873)
+        float3 xformOp:scale = (70, 70, 70)
+        float3 xformOp:translate = (87.154366, 0, 43.03419)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "Collider"
@@ -458,8 +458,8 @@ def Xform "Root"
         references = @Uranus.usdz@
     )
     {
-        float3 xformOp:scale = (25, 25, 25)
-        float3 xformOp:translate = (4.89408, 0, 84.767715)
+        float3 xformOp:scale = (70, 70, 70)
+        float3 xformOp:translate = (40.024574, 0, 84.767715)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "Collider"
@@ -522,8 +522,8 @@ def Xform "Root"
         references = @Neptune.usdz@
     )
     {
-        float3 xformOp:scale = (25, 25, 25)
-        float3 xformOp:translate = (-38.67488, 0, 60.37546)
+        float3 xformOp:scale = (60, 60, 60)
+        float3 xformOp:translate = (-7.346119, 0, 93.08448)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "Collider"
@@ -557,8 +557,8 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0, 0, 3.2033463)
+        float3 xformOp:scale = (2, 2, 2)
+        float3 xformOp:translate = (-8.109743, 5.0105155e-7, -13.104294)
 
         def RealityKitComponent "AudioLibrary"
         {
@@ -618,8 +618,9 @@ def Xform "Root"
     )
     {
         reorder nameChildren = ["New_Audio_File", "Materials", "Meshes", "AnimationLibrary"]
-        float3 xformOp:scale = (0.2, 0.2, 0.2)
-        float3 xformOp:translate = (-72, 0, 0)
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.15, 0.15, 0.15)
+        float3 xformOp:translate = (-72, 0, -26.395073)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "AnimationLibrary"
@@ -737,8 +738,8 @@ def Xform "Root"
         references = @Moon 1.usdz@
     )
     {
-        float3 xformOp:scale = (8, 8, 8)
-        float3 xformOp:translate = (6.442625, 1.5965108, 3.0751112)
+        float3 xformOp:scale = (10, 10, 10)
+        float3 xformOp:translate = (-16.734175, 5.071449, -17.894394)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def RealityKitComponent "ImageBasedLight"
@@ -790,9 +791,18 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (-4.2221963e-8, -1.13133405e-8, 0.9659258, -0.25881904)
-        float3 xformOp:scale = (0.003, 0.003, 0.003)
-        float3 xformOp:translate = (8.861183, 1.2642682, -3.0216331)
+        float3 xformOp:scale = (0.005, 0.005, 0.005)
+        float3 xformOp:translate = (-6.6101, 7.4378047, -10.82261)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "NASA_logo"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
     }
 
     def "FloatingAstronaut" (
@@ -848,6 +858,27 @@ def Xform "Root"
                 uniform string name = "default subtree animation"
             }
         }
+
+        over "Materials"
+        {
+            over "material_0"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "material_1"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+
+            over "material_2"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
     }
 
     def "SpaceCargoTransporter" (
@@ -859,8 +890,8 @@ def Xform "Root"
     )
     {
         quatf xformOp:orient = (0.9330127, 0.25, 0.06698729, 0.25)
-        float3 xformOp:scale = (0.001, 0.001, 0.001)
-        float3 xformOp:translate = (4.1258464, 1.8921635, 3.1697295)
+        float3 xformOp:scale = (0.003, 0.003, 0.003)
+        float3 xformOp:translate = (-5.85565, 1.8921635, -20.105135)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
@@ -874,7 +905,7 @@ def Xform "Root"
     {
         quatf xformOp:orient = (0.9330127, -0.06698729, 0.25000003, 0.24999997)
         float3 xformOp:scale = (0.001, 0.001, 0.001)
-        float3 xformOp:translate = (6.0968447, 0, 1.6159635)
+        float3 xformOp:translate = (1.57094, 2.882458, -0.3428427)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
@@ -1156,6 +1187,31 @@ def Xform "Root"
     {
         uniform asset file = @Efeito sonoro - Som da nave espacial.mp3@
         uniform bool shouldLoop = 0
+    }
+
+    def "Hubble_1" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0.5235987, 3.1415927, 0)
+        }
+        references = @Hubble.usdz@
+    )
+    {
+        float2 ui:nodegraph:node:pos = (20, 20)
+        int ui:nodegraph:node:stackingOrder = 1
+        quatf xformOp:orient = (-4.2221963e-8, -1.13133405e-8, 0.9659258, -0.25881904)
+        float3 xformOp:scale = (0.005, 0.005, 0.005)
+        float3 xformOp:translate = (12.449548, 5.4397106, -2.4575195)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "Materials"
+        {
+            over "NASA_logo"
+            {
+                token outputs:mtlx:surface
+                token outputs:realitykit:vertex
+            }
+        }
     }
 }
 
