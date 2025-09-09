@@ -14,6 +14,7 @@
 		660AFE6A2B44DB5700D57B8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 660AFE692B44DB5700D57B8E /* Assets.xcassets */; };
 		660AFE6D2B44DB5700D57B8E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 660AFE6C2B44DB5700D57B8E /* Preview Assets.xcassets */; };
 		660AFE752B44DDBD00D57B8E /* EnvironmentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660AFE742B44DDBD00D57B8E /* EnvironmentLoader.swift */; };
+		E935B10D2DF3686A00D3989B /* ImmersiveHandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E935B10C2DF3686A00D3989B /* ImmersiveHandView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		660AFE742B44DDBD00D57B8E /* EnvironmentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentLoader.swift; sourceTree = "<group>"; };
 		7936CB17004BF9FCD83B79B1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8C56D5DE41288F01940F8143 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
+		E935B10C2DF3686A00D3989B /* ImmersiveHandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImmersiveHandView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -91,6 +93,7 @@
 				660AFE632B44DB5600D57B8E /* ContentView.swift */,
 				E9D08D2C2DEF686600F8F8E4 /* Fonts */,
 				660AFE652B44DB5600D57B8E /* ImmersiveView.swift */,
+				E935B10C2DF3686A00D3989B /* ImmersiveHandView.swift */,
 				660AFE742B44DDBD00D57B8E /* EnvironmentLoader.swift */,
 				660AFE692B44DB5700D57B8E /* Assets.xcassets */,
 				660AFE6E2B44DB5700D57B8E /* Info.plist */,
@@ -192,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E935B10D2DF3686A00D3989B /* ImmersiveHandView.swift in Sources */,
 				660AFE642B44DB5600D57B8E /* ContentView.swift in Sources */,
 				660AFE622B44DB5600D57B8E /* MeadowApp.swift in Sources */,
 				660AFE752B44DDBD00D57B8E /* EnvironmentLoader.swift in Sources */,
@@ -332,7 +336,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Meadow/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RDBBF5GZZ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meadow/Info.plist;
@@ -362,7 +366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Meadow/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RDBBF5GZZ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Meadow/Info.plist;
